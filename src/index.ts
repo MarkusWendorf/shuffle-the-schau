@@ -11,6 +11,10 @@ const imageCdns = [
   "https://images.sportschau.de",
 ];
 
+app.get("robots.txt", (c) =>
+  c.text(["User-agent: *", "Disallow: /"].join("\n"))
+);
+
 app.get("*", async (c) => {
   const url = new URL(originalUrl);
   url.pathname = c.req.path;
